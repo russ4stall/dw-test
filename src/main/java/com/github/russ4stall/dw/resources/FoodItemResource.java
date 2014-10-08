@@ -1,7 +1,7 @@
 package com.github.russ4stall.dw.resources;
 
 import com.codahale.metrics.annotation.Timed;
-import com.github.russ4stall.dw.core.FoodItem;
+import com.github.russ4stall.dw.api.FoodItem;
 import com.github.russ4stall.dw.jdbi.FoodItemDao;
 
 import javax.ws.rs.Consumes;
@@ -37,5 +37,13 @@ public class FoodItemResource {
     public void addNew(FoodItem foodItem) {
         foodItemDao.insert(foodItem.getTitle(), foodItem.getCalories());
     }
+
+    @POST @Path("/list")
+    public void multipleNames(List<FoodItem> foodItems) {
+        for (FoodItem item : foodItems) {
+            foodItemDao.insert(item.getTitle(), item.getCalories());
+        }
+    }
+
 
 }

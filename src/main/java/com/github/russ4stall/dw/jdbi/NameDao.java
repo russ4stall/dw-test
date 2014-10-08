@@ -1,12 +1,11 @@
 package com.github.russ4stall.dw.jdbi;
 
-import com.github.russ4stall.dw.core.Name;
+import com.github.russ4stall.dw.api.Name;
 import org.skife.jdbi.v2.sqlobject.Bind;
 import org.skife.jdbi.v2.sqlobject.SqlQuery;
 import org.skife.jdbi.v2.sqlobject.SqlUpdate;
 import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
 
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -19,4 +18,8 @@ public interface NameDao {
 
     @SqlQuery("select id, name from name")
     List<Name> getAll();
+
+    @SqlQuery("select * from name where id=:id")
+    Name getById(@Bind("id") int id);
+
 }

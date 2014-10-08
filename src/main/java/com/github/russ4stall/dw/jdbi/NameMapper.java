@@ -1,6 +1,6 @@
 package com.github.russ4stall.dw.jdbi;
 
-import com.github.russ4stall.dw.core.Name;
+import com.github.russ4stall.dw.api.Name;
 import org.skife.jdbi.v2.StatementContext;
 import org.skife.jdbi.v2.tweak.ResultSetMapper;
 
