@@ -1,0 +1,58 @@
+template: Hello, %s!
+defaultName: Stranger
+
+
+# DATABASE
+database:
+
+  # the name of your JDBC driver
+  driverClass: com.mysql.jdbc.Driver
+
+  # the username
+  user: dw
+
+  # the password
+  password: dw
+
+  # the JDBC URL
+  url: jdbc:mysql://localhost:3306/dw
+
+
+
+server:
+#  softNofileLimit: 1000
+#  hardNofileLimit: 1000
+  applicationConnectors:
+    - type: http
+      port: 8989
+#    - type: https
+#      port: 8443
+#      keyStorePath: example.keystore
+#      keyStorePassword: example
+#      validateCerts: false
+# this requires the npn-boot library on the JVM's boot classpath
+#    - type: spdy3
+#      port: 8445
+#      keyStorePath: example.keystore
+#      keyStorePassword: example
+#      validateCerts: false
+  adminConnectors:
+    - type: http
+      port: 8081
+#    - type: https
+#      port: 8444
+#      keyStorePath: example.keystore
+#      keyStorePassword: example
+#      validateCerts: false
+
+
+logging:
+  level: INFO
+
+
+# AUTHORIZATION
+
+allowedGrantTypes:
+  - password
+
+bearerRealm: oauth2-provider

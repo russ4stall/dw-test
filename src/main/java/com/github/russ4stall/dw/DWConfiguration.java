@@ -1,6 +1,7 @@
 package com.github.russ4stall.dw;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.common.collect.ImmutableList;
 import io.dropwizard.Configuration;
 import io.dropwizard.db.DataSourceFactory;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -20,6 +21,24 @@ public class DWConfiguration extends Configuration {
 
     public DataSourceFactory getDataSourceFactory() {
         return database;
+    }
+
+    @Valid
+    @JsonProperty
+    private ImmutableList<String> allowedGrantTypes;
+
+    @Valid
+    @JsonProperty
+    @NotEmpty
+    private String bearerRealm;
+
+
+    public String getBearerRealm() {
+        return bearerRealm;
+    }
+
+    public ImmutableList<String> getAllowedGrantTypes() {
+        return allowedGrantTypes;
     }
 
     @NotEmpty
